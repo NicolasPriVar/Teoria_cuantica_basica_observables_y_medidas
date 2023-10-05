@@ -1,6 +1,5 @@
 import numpy as np
-def print_hi(name):
-    print(f'Hi, {name}')
+
 def proba(v,p):
     t=v[p]
     r=np.real(t)
@@ -26,6 +25,22 @@ def transicion(v1, v2):
     r=np.transpose(np.conjugate(vn2))
     o=np.dot(r,vn)
     return o
-if __name__ == '__main__':
     
-   print_hi('PyCharm')
+def probabilidadtrans(v1,v2):
+    x=np.array(v1)
+    vn=x/np.linalg.norm(x)
+    y=np.array(v2)
+    vn2=y/np.linalg.norm(y)
+    r=np.transpose(np.conjugate(vn2))
+    o=np.dot(r,vn)
+    p=np.real(o)
+    i=np.imag(o)
+    normanum=(p**2)+(i**2)
+    return normanum
+
+def main():
+    a=[1+1j, 3-3j, 2+6j]
+    b=[2+1j, 3-5j, 2+3j]
+    print(probabilidadtrans(a,b))
+    print(transicion(a,b))
+main()
