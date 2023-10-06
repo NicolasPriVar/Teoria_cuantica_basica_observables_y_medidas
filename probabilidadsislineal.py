@@ -1,5 +1,6 @@
 import numpy as np
-
+def print_hi(name):
+    print(f'Hi, {name}')
 def proba(v,p):
     t=v[p]
     r=np.real(t)
@@ -38,9 +39,21 @@ def probabilidadtrans(v1,v2):
     normanum=(p**2)+(i**2)
     return normanum
 
-def main():
-    a=[1+1j, 3-3j, 2+6j]
-    b=[2+1j, 3-5j, 2+3j]
-    print(probabilidadtrans(a,b))
-    print(transicion(a,b))
-main()
+def hervarmed(m,a):
+    ma=len(m)
+    na=(len(m[0]))
+    c=[[0 for i in range (len(m))]for j in range (len(m))]
+    for elemento in c:
+        for i in range (ma):
+            for j in range(na):
+                c[i][j]=np.conjugate(m[j][i])
+    if m==c:
+        media = np.real(np.dot(np.conjugate(np.transpose(a)), np.dot(m, a)))
+        varianza = np.real(np.dot(np.conjugate(np.transpose(a)), np.dot(np.dot(m,m), a)) - media**2)
+        return media, varianza
+    else:
+        return("Matriz no hermitiana")
+if __name__ == '__main__':
+    
+   print_hi('PyCharm')
+
