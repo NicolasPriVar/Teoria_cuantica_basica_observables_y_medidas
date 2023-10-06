@@ -17,6 +17,11 @@ class TestCibreriaComplejos(unittest.TestCase):
         self.assertAlmostEqual(v, 0.2754166666666666)
         v1=probabilidad.probabilidadtrans([1+1j, 3-3j, 2+6j], [2+1j, 3-5j, 2+3j])
         self.assertAlmostEqual(v1, 0.8237179487179488)
+    def test_media_y_varianza(self):
+        v=probabilidad.hervarmed([[2, 1+3j],[1-3j, 4]], [1,0])
+        self.assertAlmostEqual(v, (2.0, 10.0))
+        v1=probabilidad.hervarmed([[9, 0+8j],[1-3j, 4]], [0,1])
+        self.assertAlmostEqual(v1, "Matriz no hermitiana")
     
 if __name__ == '__main__':
     unittest.main()
